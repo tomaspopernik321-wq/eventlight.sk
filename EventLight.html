@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EventLight | Profesionálne osvetlenie podujatí</title>
+
+    <meta name="description" content="EventLight – osvetlenie koncertov, svadieb, osláv, výročí, obecných podujatí a budov. Telefón: 0908 618 644.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --pozadie: #090b12;
+            --panel: #121621;
+            --zlata: #ffbd39;
+            --siva: #a9afbd;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--pozadie);
+            color: white;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .kontajner {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* MENU */
+
+        header {
+            background: rgba(9, 11, 18, 0.97);
+            border-bottom: 1px solid #252a38;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navigacia {
+            min-height: 78px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .logo span,
+        h1 span {
+            color: var(--zlata);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            color: #e0e3eb;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--zlata);
+        }
+
+        /* TLAČIDLÁ */
+
+        .tlacidlo {
+            display: inline-block;
+            padding: 13px 23px;
+            border: 1px solid var(--zlata);
+            border-radius: 5px;
+            background: var(--zlata);
+            color: #101117;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tlacidlo:hover {
+            background: transparent;
+            color: var(--zlata);
+        }
+
+        .tlacidlo-obrys {
+            display: inline-block;
+            padding: 13px 23px;
+            border: 1px solid #646b7d;
+            border-radius: 5px;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .tlacidlo-obrys:hover {
+            border-color: var(--zlata);
+            color: var(--zlata);
+        }
+
+        /* ÚVOD */
+
+        .uvod {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 80% 20%,
+                    rgba(111, 69, 255, 0.25), transparent 40%),
+                radial-gradient(ellipse at 95% 80%,
+                    rgba(255, 189, 57, 0.16), transparent 35%),
+                linear-gradient(120deg, #090b12, #151827);
+        }
+
+        .uvod-obsah {
+            max-width: 760px;
+            padding: 90px 0;
+        }
+
+        .stitok {
+            display: inline-block;
+            color: var(--zlata);
+            border: 1px solid rgba(255, 189, 57, 0.4);
+            padding: 7px 13px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.08;
+            margin-bottom: 25px;
+        }
+
+        .uvod p {
+            max-width: 600px;
+            color: var(--siva);
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        .uvod-info {
+            margin-top: 35px;
+            color: #c2c7d2;
+            font-size: 14px;
+        }
+
+        /* SEKCIE */
+
+        section {
+            padding: 90px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .nadpis-sekcie {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+
+        .nadpis-sekcie small {
+            color: var(--zlata);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.2;
+            margin: 12px 0 16px;
+        }
+
+        .nadpis-sekcie p {
+            color: var(--siva);
+        }
+
+        /* SLUŽBY */
+
+        .sluzby {
+            background: #0d1019;
+        }
+
+        .mriezka {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .karta {
+            background: var(--panel);
+            border: 1px solid #252b3a;
+            padding: 30px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .karta:hover {
+            transform: translateY(-6px);
+            border-color: var(--zlata);
+        }
+
+        .ikona {
+            font-size: 34px;
+            margin-bottom: 18px;
+        }
+
+        .karta h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .karta p {
+            color: var(--siva);
+            font-size: 15px;
+        }
+
+        /* O NÁS */
+
+        .dva-stlpce {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .o-nas-text p {
+            color: var(--siva);
+            margin: 15px 0;
+        }
+
+        .vyhody {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .vyhody li {
+            margin: 13px 0;
+            color: #e5e7ee;
+        }
+
+        .vyhody li::before {
+            content: "✓";
+            color: var(--zlata);
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .svetelny-panel {
+            min-height: 340px;
+            border-radius: 12px;
+            border: 1px solid #343044;
+            background:
+                radial-gradient(ellipse at 50% 100%,
+                    rgba(255, 189, 57, 0.35), transparent 50%),
+                radial-gradient(ellipse at 25% 0%,
+                    rgba(104, 73, 255, 0.35), transparent 45%),
+                linear-gradient(135deg, #1a1d2b, #0b0d15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .svetelny-panel div {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .svetelny-panel span {
+            display: block;
+            color: var(--zlata);
+            font-size: 14px;
+            letter-spacing: 5px;
+            margin-top: 10px;
+        }
+
+        /* SPOLUPRÁCA */
+
+        .spolupraca {
+            background: #111521;
+        }
+
+        .spolupraca-box {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            border: 1px solid #33394a;
+            border-radius: 12px;
+            padding: 45px;
+            background:
+                radial-gradient(ellipse at top,
+                    rgba(255, 189, 57, 0.09), transparent 60%),
+                #121621;
+        }
+
+        .spolupraca-box p {
+            color: var(--siva);
+            margin: 15px 0 25px;
+        }
+
+        /* KONTAKT */
+
+        .kontakt {
+            background:
+                radial-gradient(ellipse at bottom,
+                    rgba(100, 75, 220, 0.12), transparent 60%),
+                var(--pozadie);
+        }
+
+        .kontakt-box {
+            max-width: 750px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .telefon {
+            display: block;
+            font-size: clamp(27px, 5vw, 42px);
+            font-weight: bold;
+            color: var(--zlata);
+            margin: 25px 0;
+        }
+
+        .kontakt-box p {
+            color: var(--siva);
+            margin-bottom: 25px;
+        }
+
+        .email-odkaz {
+            display: inline-block;
+            color: var(--zlata);
+            margin-top: 15px;
+            font-size: 17px;
+        }
+
+        /* FORMULÁR */
+
+        .formular {
+            max-width: 800px;
+            margin: 45px auto 0;
+            padding: 35px;
+            background: var(--panel);
+            border: 1px solid #303648;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .formular h3 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .formular .popis {
+            color: var(--siva);
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-polozka {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-polozka label {
+            color: #e5e7ee;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-polozka input,
+        .form-polozka select,
+        .form-polozka textarea {
+            width: 100%;
+            padding: 13px;
+            border-radius: 5px;
+            border: 1px solid #343b4e;
+            background: #090b12;
+            color: white;
+            font: inherit;
+            outline: none;
+        }
+
+        .form-polozka input:focus,
+        .form-polozka select:focus,
+        .form-polozka textarea:focus {
+            border-color: var(--zlata);
+        }
+
+        .form-polozka select option {
+            background: #121621;
+            color: white;
+        }
+
+        .form-polozka textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .formular button {
+            width: 100%;
+        }
+
+        .poznamka-formular {
+            color: var(--siva);
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        /* PÄTIČKA */
+
+        footer {
+            padding: 25px 0;
+            border-top: 1px solid #252a38;
+            color: #9299a9;
+            font-size: 13px;
+        }
+
+        .pata {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        footer .logo span {
+            color: var(--zlata);
+        }
+
+        footer a:hover {
+            color: var(--zlata);
+        }
+
+        /* MOBILY A TABLETY */
+
+        @media (max-width: 850px) {
+            .navigacia {
+                padding: 18px 0;
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .mriezka {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dva-stlpce {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .uvod {
+                min-height: 560px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .mriezka {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .tlacidlo-obrys {
+                margin: 12px 0 0;
+            }
+
+            .spolupraca-box,
+            .formular {
+                padding: 24px 18px;
+            }
+
+            .uvod-obsah {
+                padding: 65px 0;
+            }
+
+            .uvod p {
+                font-size: 16px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HORNÉ MENU -->
+
+    <header>
+        <div class="kontajner navigacia">
+
+            <a href="#domov" class="logo">
+                EVENT<span>LIGHT</span>
+            </a>
+
+            <nav>
+                <a href="#domov">Domov</a>
+                <a href="#sluzby">Služby</a>
+                <a href="#onas">O nás</a>
+                <a href="#spolupraca">Spolupráca</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ÚVODNÁ STRÁNKA -->
+
+        <section class="uvod" id="domov">
+            <div class="kontajner">
+
+                <div class="uvod-obsah">
+
+                    <div class="stitok">
+                        EVENTLIGHT · EVENT LIGHTING
+                    </div>
+
+                    <h1>
+                        Svetlo, ktoré<br>
+                        vytvorí <span>zážitok.</span>
+                    </h1>
+
+                    <p>
+                        Profesionálne osvetlenie koncertov, svadieb,
+                        osláv, výročí, obecných podujatí a budov.
+                        Každá udalosť si zaslúži jedinečnú atmosféru.
+                    </p>
+
+                    <a href="#sluzby" class="tlacidlo">
+                        Naše služby
+                    </a>
+
+                    <a href="#kontakt" class="tlacidlo-obrys">
+                        Napísať nám
+                    </a>
+
+                    <div class="uvod-info">
+                        ✦ Koncerty &nbsp;
+                        ✦ Svadby &nbsp;
+                        ✦ Oslavy &nbsp;
+                        ✦ Obecné podujatia
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SLUŽBY -->
+
+        <section class="sluzby" id="sluzby">
+            <div class="kontajner">
+
+                <div class="nadpis-sekcie">
+                    <small>Čo ponúkame</small>
+                    <h2>Osvetlenie pre každú príležitosť</h2>
+                    <p>
+                        Od komorných osláv až po veľké verejné podujatia.
+                        Spoločne nájdeme vhodné svetelné riešenie.
+                    </p>
+                </div>
+
+                <div class="mriezka">
+
+                    <div class="karta">
+                        <div class="ikona">🎤</div>
+                        <h3>Koncerty a live akcie</h3>
+                        <p>
+                            Dynamické svetelné efekty, farebné scény
+                            a osvetlenie pódia pre koncerty a vystúpenia.
+                        </p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikona">💍</div>
+                        <h3>Svadby</h3>
+                        <p>
+                            Elegantné osvetlenie sály, parketu
+                            a priestoru pre nezabudnuteľnú atmosféru.
+                        </p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikona">🎉</div>
+                        <h3>Oslavy a výročia</h3>
+                        <p>
+                            Narodeniny, jubileá, výročia a rodinné oslavy
+                            s osvetlením podľa charakteru podujatia.
+                        </p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikona">🏛️</div>
+                        <h3>Nasvietenie budov</h3>
+                        <p>
+                            Farebné a slávnostné nasvietenie fasád,
+                            historických objektov a významných budov.
+                        </p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikona">🏘️</div>
+                        <h3>Obecné podujatia</h3>
+                        <p>
+                            Osvetlenie obecných dní, výročí obcí,
+                            kultúrnych programov, slávností a festivalov.
+                        </p>
+                    </div>
+
+                    <div class="karta">
+                        <div class="ikona">✨</div>
+                        <h3>Slávnostné udalosti</h3>
+                        <p>
+                            Otvorenia, galavečery, firemné večierky,
+                            kultúrne vystúpenia a spoločenské akcie.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- O NÁS -->
+
+        <section class="o-nas" id="onas">
+            <div class="kontajner dva-stlpce">
+
+                <div class="o-nas-text">
+
+                    <div class="stitok">EVENTLIGHT</div>
+
+                    <h2>Každý priestor môže zažiariť.</h2>
+
+                    <p>
+                        Svetlo dokáže zmeniť obyčajný priestor
+                        na výnimočné miesto. Naším cieľom je vytvárať
+                        atmosféru, ktorá podčiarkne charakter každej udalosti.
+                    </p>
+
+                    <p>
+                        Pri návrhu osvetlenia zohľadňujeme typ podujatia,
+                        priestor aj predstavy organizátora.
+                    </p>
+
+                    <ul class="vyhody">
+                        <li>Individuálny prístup ku každej akcii</li>
+                        <li>Osvetlenie podľa charakteru podujatia</li>
+                        <li>Dohoda o rozsahu a technických možnostiach</li>
+                        <li>Spolupráca s organizátormi a obcami</li>
+                    </ul>
+
+                    <a href="#kontakt" class="tlacidlo">
+                        Dohodnúť spoluprácu
+                    </a>
+
+                </div>
+
+                <div class="svetelny-panel">
+                    <div>
+                        EVENT<span>LIGHT</span>
+                        <span>LIGHT UP YOUR EVENT</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SPOLUPRÁCA -->
+
+        <section class="spolupraca" id="spolupraca">
+            <div class="kontajner">
+
+                <div class="spolupraca-box">
+
+                    <div class="stitok">PRE ORGANIZÁTOROV</div>
+
+                    <h2>Hľadáte osvetlenie pre svoje podujatie?</h2>
+
+                    <p>
+                        Radi s vami preberieme predstavu, termín,
+                        miesto konania a potrebný rozsah osvetlenia.
+                        Spolupráca s obcami, farnosťami, kultúrnymi
+                        organizáciami aj súkromnými zákazníkmi je možná
+                        po vzájomnej dohode.
+                    </p>
+
+                    <p>
+                        <strong>
+                            Možnosť spolupráce na faktúru po dohode.
+                        </strong>
+                    </p>
+
+                    <a href="#kontakt" class="tlacidlo">
+                        Kontaktovať EventLight
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KONTAKT A FORMULÁR -->
+
+        <section class="kontakt" id="kontakt">
+            <div class="kontajner">
+
+                <div class="kontakt-box">
+
+                    <div class="stitok">OZVITE SA NÁM</div>
+
+                    <h2>Rozsvieťme vaše podujatie.</h2>
+
+                    <p>
+                        Plánujete koncert, svadbu, oslavu, výročie
+                        alebo obecné podujatie? Zavolajte nám
+                        alebo nám napíšte cez formulár.
+                    </p>
+
+                    <a href="tel:+421908618644" class="telefon">
+                        0908 618 644
+                    </a>
+
+                    <a href="tel:+421908618644" class="tlacidlo">
+                        Zavolať teraz
+                    </a>
+
+                    <br>
+
+                    <a href="mailto:eventlight@gmail.com"
+                       class="email-odkaz">
+                        ✉ eventlight@gmail.com
+                    </a>
+
+                </div>
+
+                <!-- FORMULÁR -->
+
+                <form class="formular" id="kontaktFormular">
+
+                    <h3>Napíšte nám správu</h3>
+
+                    <p class="popis">
+                        Vyplňte údaje o podujatí.
+                        Ozveme sa vám a dohodneme podrobnosti.
+                    </p>
+
+                    <div class="form-grid">
+
+                        <div class="form-polozka">
+                            <label for="meno">
+                                Meno a priezvisko *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="meno"
+                                name="meno"
+                                placeholder="Vaše meno a priezvisko"
+                                autocomplete="name"
+                                required>
+                        </div>
+
+                        <div class="form-polozka">
+                            <label for="miesto">
+                                Miesto konania *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="miesto"
+                                name="miesto"
+                                placeholder="Obec, mesto alebo sála"
+                                required>
+                        </div>
+
+                        <div class="form-polozka">
+                            <label for="datum">
+                                Dátum podujatia *
+                            </label>
+
+                            <input
+                                type="date"
+                                id="datum"
+                                name="datum"
+                                required>
+                        </div>
+
+                        <div class="form-polozka">
+                            <label for="cas">
+                                Čas podujatia *
+                            </label>
+
+                            <input
+                                type="time"
+                                id="cas"
+                                name="cas"
+                                required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-polozka">
+                        <label for="program">
+                            Druh programu *
+                        </label>
+
+                        <select
+                            id="program"
+                            name="program"
+                            required>
+
+                            <option value="">
+                                Vyberte druh podujatia
+                            </option>
+
+                            <option value="Koncerty a live akcie">
+                                Koncerty a live akcie
+                            </option>
+
+                            <option value="Svadby">
+                                Svadby
+                            </option>
+
+                            <option value="Oslavy a výročia">
+                                Oslavy a výročia
+                            </option>
+
+                            <option value="Nasvietenie budov">
+                                Nasvietenie budov
+                            </option>
+
+                            <option value="Obecné podujatia">
+                                Obecné podujatia
+                            </option>
+
+                            <option value="Slávnostné udalosti">
+                                Slávnostné udalosti
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-polozka">
+                        <label for="sprava">
+                            Súkromná správa *
+                        </label>
+
+                        <textarea
+                            id="sprava"
+                            name="sprava"
+                            placeholder="Opíšte nám svoju predstavu, požiadavky na osvetlenie alebo ďalšie podrobnosti..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="tlacidlo">
+                        Odoslať dopyt →
+                    </button>
+
+                    <p class="poznamka-formular">
+                        * Povinné polia. Po kliknutí sa otvorí
+                        e-mailová aplikácia s pripravenou správou.
+                    </p>
+
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PÄTIČKA -->
+
+    <footer>
+        <div class="kontajner pata">
+
+            <a href="#domov" class="logo">
+                EVENT<span>LIGHT</span>
+            </a>
+
+            <div>
+                © <span id="rok"></span> EventLight.
+                Všetky práva vyhradené.
+            </div>
+
+            <a href="#domov">
+                Späť na začiatok ↑
+            </a>
+
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+        // Automatický aktuálny rok
+        document.getElementById("rok").textContent =
+            new Date().getFullYear();
+
+        // Odoslanie dopytu cez e-mailovú aplikáciu
+        document.getElementById("kontaktFormular")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const meno =
+                    document.getElementById("meno").value.trim();
+
+                const miesto =
+                    document.getElementById("miesto").value.trim();
+
+                const datum =
+                    document.getElementById("datum").value;
+
+                const cas =
+                    document.getElementById("cas").value;
+
+                const program =
+                    document.getElementById("program").value;
+
+                const sprava =
+                    document.getElementById("sprava").value.trim();
+
+                const predmet = "Nový dopyt - EventLight";
+
+                const textSpravy =
+                    "NOVÝ DOPYT Z WEBSTRÁNKY EVENTLIGHT\n\n" +
+                    "Meno a priezvisko: " + meno + "\n" +
+                    "Miesto konania: " + miesto + "\n" +
+                    "Dátum podujatia: " + datum + "\n" +
+                    "Čas podujatia: " + cas + "\n" +
+                    "Druh programu: " + program + "\n\n" +
+                    "SÚKROMNÁ SPRÁVA:\n" + sprava;
+
+                const odkaz =
+                    "mailto:eventlight@gmail.com" +
+                    "?subject=" + encodeURIComponent(predmet) +
+                    "&body=" + encodeURIComponent(textSpravy);
+
+                window.location.href = odkaz;
+            });
+    </script>
+
+</body>
+</html>
